@@ -39,7 +39,7 @@ int main()
     std::cout << std::endl;
     //динамическая память
     {
-        freopen("input.txt", "r", stdin);
+        freopen("input2.txt", "r", stdin); // тестовая матрица сячейками, заполненными "5" - "input.txt"
         int size;
         std::cin >> size;
         int** doubleArray = new int* [size];
@@ -53,7 +53,6 @@ int main()
             {
                 std::cin >> doubleArray[i][j];
             }
-            std::cout << '\n';
         }
         fclose(stdin);
         freopen("output.txt", "w", stdout);
@@ -98,23 +97,38 @@ int check2(int* const* arr, const int& size)
     int count = 0;
     int maxColumn = 0;
     int minRow = 0;
+    bool changeCol = 0;
+    bool changeRow = 0;
+    std::cout << "Позиции седловых точек: " << std::endl;
     for (int i = 0; i < size; i++)
     {
         minRow = arr[i][0];
+        for (int c = 0; c < size; c++)
+        {
+            if (arr[i][c] != arr[i][0])
+            {
+                changeRow = 1;
+            }
+            if (arr[i][c] < arr[i][0])
+            {
+                minRow = arr[i][c];
+            }
+        }
         for (int j = 0; j < size; j++)
         {
             maxColumn = arr[0][j];
-            if (arr[i][j] < minRow)
+            for (int r = 0; r < size; r++)
             {
-                for (int k = 0; k < size; k++)
+                if (arr[r][j] != arr[0][j])
                 {
-                    if (arr[i][k] < arr[i][j])
-                    {
-                        minRow = arr[i][k]; // минимальный элемент в строке
-                    }
+                    changeCol = 1;
+                }
+                if (arr[r][j] > arr[0][j])
+                {
+                    maxColumn = arr[r][j];
                 }
             }
-            if (arr[0][0] <= minRow)
+            if (arr[i][j] < minRow)
             {
                 for (int k = 0; k < size; k++)
                 {
@@ -134,22 +148,15 @@ int check2(int* const* arr, const int& size)
                     }
                 }
             }
-            if (arr[0][0] >= maxColumn)
-            {
-                for (int k = 0; k < size; k++)
-                {
-                    if (arr[k][j] > arr[i][j])
-                    {
-                        maxColumn = arr[k][j]; // максимальный элемент в строке
-                    }
-                }
-            }
-            if ((minRow == maxColumn))
+            if ((minRow == maxColumn) && (changeRow == 1) && (changeCol == 1))
             {
                 count++;
-                change = 0;
+                std::cout << i << ":" << j << std::endl;
             }
         }
+        changeRow = 0;
+        changeCol = 0;
     }
+    std::cout << std::endl;
     return count;
 }
