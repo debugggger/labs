@@ -7,6 +7,7 @@ int check1(int row, int column, int** arr);
 int check2(int* const* arr, const int& size);
 void task1();
 void task2();
+bool isEmpty(std::ifstream& pFile);
 
 int main()
 {
@@ -48,9 +49,15 @@ void task1()
 
 void task2()
 {
-    freopen("input2.txt", "r", stdin); // тестовая матрица сячейками, заполненными "5" - "input.txt"
+    bool fileOK = 1;
+    freopen("input2.txt", "r", stdin); // тестовая матрица с ячейками, заполненными "5" - "input.txt"
     int size;
-    std::cin >> size;
+    if (!(std::cin >> size))
+    {
+        fileOK = 0;
+    }
+    else
+        fileOK = 1;
     int** doubleArray = new int* [size];
     for (int i = 0; i < size; i++)
     {
@@ -60,22 +67,34 @@ void task2()
     {
         for (int j = 0; j < size; j++)
         {
-            std::cin >> doubleArray[i][j];
+            if (!(std::cin >> doubleArray[i][j]))
+            {
+                fileOK = 0;
+            }
+            else
+            {
+                fileOK = 1;
+            }
         }
     }
     fclose(stdin);
     freopen("output.txt", "w", stdout);
-    std::cout << "Задана матрица: " << std::endl;
-    for (int i = 0; i < size; i++)
+    if (fileOK == 1)
     {
-        for (int j = 0; j < size; j++)
+        std::cout << "Задана матрица: " << std::endl;
+        for (int i = 0; i < size; i++)
         {
-            std::cout << doubleArray[i][j] << "\t";
+            for (int j = 0; j < size; j++)
+            {
+                std::cout << doubleArray[i][j] << "\t";
+            }
+            std::cout << '\n';
         }
-        std::cout << '\n';
+        std::cout << std::endl;
+        std::cout << "Количество седловых точек матрицы: " << check2(doubleArray, size);
     }
-    std::cout << std::endl;
-    std::cout << "Количество седловых точек матрицы: " << check2(doubleArray, size);
+    else
+        std::cout << "В исходном файле содержаться не корректные значения!";
     fclose(stdout);
 }
 
