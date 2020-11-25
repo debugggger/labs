@@ -7,7 +7,9 @@ int check1(int row, int column, int** arr);
 int check2(int* const* arr, const int& size);
 void task1();
 void task2();
-bool isEmpty(std::ifstream& pFile);
+int setMinRow(const int size, int* const* arr, int i);
+int setMaxCol(const int size, int* const* arr, int j);
+int MaxMin(const int size, int* const* arr, int i, int j);
 
 int main()
 {
@@ -118,66 +120,26 @@ int check1(int row, int column, int** arr)
     return nullLine;
 }
 
+
+int maxColumn = 0;
+int minRow = 0;
+bool changeCol = 0;
+bool changeRow = 0;
 int check2(int* const* arr, const int& size)
 {
     int count = 0;
-    int maxColumn = 0;
-    int minRow = 0;
-    bool changeCol = 0;
-    bool changeRow = 0;
     std::cout << "Позиции седловых точек: " << std::endl;
-    for (int i = 0; i < size; i++)
+    for (int row = 0; row < size; row++)
     {
-        minRow = arr[i][0];
-        for (int c = 0; c < size; c++)
+        setMinRow(size, arr, row);
+        for (int col = 0; col < size; col++)
         {
-            if (arr[i][c] != arr[i][0])
-            {
-                changeRow = 1;
-            }
-            if (arr[i][c] < arr[i][0])
-            {
-                minRow = arr[i][c];
-            }
-        }
-        for (int j = 0; j < size; j++)
-        {
-            maxColumn = arr[0][j];
-            for (int r = 0; r < size; r++)
-            {
-                if (arr[r][j] != arr[0][j])
-                {
-                    changeCol = 1;
-                }
-                if (arr[r][j] > arr[0][j])
-                {
-                    maxColumn = arr[r][j];
-                }
-            }
-            if (arr[i][j] < minRow)
-            {
-                for (int k = 0; k < size; k++)
-                {
-                    if (arr[i][k] < arr[i][j])
-                    {
-                        minRow = arr[i][k]; // минимальный элемент в строке
-                    }
-                }
-            }
-            if (arr[i][j] > maxColumn)
-            {
-                for (int k = 0; k < size; k++)
-                {
-                    if (arr[k][j] > arr[i][j])
-                    {
-                        maxColumn = arr[k][j]; // максимальный элемент в строке
-                    }
-                }
-            }
+            setMaxCol(size, arr, col);
+            MaxMin(size, arr, row, col);
             if ((minRow == maxColumn) && (changeRow == 1) && (changeCol == 1))
             {
                 count++;
-                std::cout << i << ":" << j << std::endl;
+                std::cout << row << ":" << col << std::endl;
             }
         }
         changeRow = 0;
@@ -185,4 +147,63 @@ int check2(int* const* arr, const int& size)
     }
     std::cout << std::endl;
     return count;
+}
+
+int setMinRow(const int size, int* const* arr, int row)
+{
+    minRow = arr[row][0];
+    for (int j = 0; j < size; j++)
+    {
+        if (arr[row][j] != arr[row][0])
+        {
+            changeRow = 1;
+        }
+        if (arr[row][j] < arr[row][0])
+        {
+            minRow = arr[row][j];
+        }
+    }
+    return 0;
+}
+
+int setMaxCol(const int size, int* const* arr, int col)
+{
+    maxColumn = arr[0][col];
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i][col] != arr[0][col])
+        {
+            changeCol = 1;
+        }
+        if (arr[i][col] > arr[0][col])
+        {
+            maxColumn = arr[i][col];
+        }
+    }
+    return 0;
+}
+
+int MaxMin(const int size, int* const* arr, int row, int col)
+{
+    if (arr[row][col] < minRow)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            if (arr[row][j] < arr[row][col])
+            {
+                minRow = arr[row][j]; // минимальный элемент в строке
+            }
+        }
+    }
+    if (arr[row][col] > maxColumn)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            if (arr[i][col] > arr[row][col])
+            {
+                maxColumn = arr[i][col]; // максимальный элемент в столбце
+            }
+        }
+    }
+    return 0;
 }
