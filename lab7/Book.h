@@ -1,7 +1,6 @@
 #pragma once
 #ifndef Book_H
 #define Book_H
-//#include <string>
 #include "MyVector.h"
 #include "MyString.h"
 

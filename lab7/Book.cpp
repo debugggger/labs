@@ -2,7 +2,7 @@
 
 Book::Book(const String textAuthor, const String textTitle,
     const String textUDK, const String textYear,
-    const String textDiscipline, const int valueQuantity) //конструктор класса с параметрами
+    const String textDiscipline, const int valueQuantity)
 {
 	this->author = textAuthor;
 	this->title = textTitle;
@@ -29,7 +29,7 @@ Book::Book()
 
 Book::~Book()
 {
-	//getAuthor.~String();
+
 }
 
 Book Book::operator+(const int right)

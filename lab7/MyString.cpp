@@ -13,7 +13,6 @@ String::String(const char* s)
     len = std::strlen(s);
     str = new char[len + 1];
     std::strcpy(str, s);
-    //*str = *s;
     num_strings++;
 }
 
@@ -31,7 +30,6 @@ String::String(const String& st)
     len = st.len;
     str = new char[len + 1];
     std::strcpy(str, st.str);
-    //*str = *st.str;
 }
 
 String::~String()
@@ -44,11 +42,9 @@ String& String::operator=(const String& st)
 {
     if (this == &st)
         return *this;
-   // delete[] str;
     len = st.len;
     str = new char[len + 1];
     std::strcpy(str, st.str);
-    //*str = *st.str;
     return *this;
     
 }
@@ -59,7 +55,6 @@ String& String::operator=(const char* s)
     len = std::strlen(s);
     str = new char[len + 1];
     std::strcpy(str, s);
-    //*str = *s;
     return *this;
 }
 
