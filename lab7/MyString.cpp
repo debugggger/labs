@@ -49,33 +49,9 @@ String& String::operator=(const String& st)
     
 }
 
-String& String::operator=(const char* s)
-{
-    delete[] str;
-    len = std::strlen(s);
-    str = new char[len + 1];
-    std::strcpy(str, s);
-    return *this;
-}
-
 char& String::operator[](int i)
 {
     return str[i];
-}
-
-const char& String::operator[](int i) const
-{
-    return str[i];
-}
-
-bool operator<(const String& st1, const String& st2)
-{
-    return (std::strcmp(st1.str, st2.str) < 0);
-}
-
-bool operator>(const String& st1, const String& st2)
-{
-    return st2 < st1;
 }
 
 bool operator==(const String& st1, const String& st2)

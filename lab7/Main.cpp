@@ -20,7 +20,7 @@ int main()
     String text;
     MyVector <Book> bookArray;
     String PATH;
-    std::cout << "Введите имя файла" << std::endl;      
+    std::cout << "Введите имя файла: ";      
     std::cin >> PATH;
     PATH = PATH + ".txt";
     books(PATH, bookArray);
@@ -52,6 +52,7 @@ int main()
         << getInfoQuantity(bookArray[maxI]) << std::endl;
 
     sort(bookArray, bookArray.size());
+
     printTable(bookArray);
 
     fclose(stdout);
@@ -97,7 +98,8 @@ void books(String& PATH, MyVector<Book>& bookArray)
         {
             if (quan < 0)
             {
-                std::cout << "Количество книг не может быть отрицательным! Исправьте данные в файле!" << std::endl;
+                std::cout << "Количество книг не может быть отрицательным! Исправьте данные в файле! В выходном файле будет содержаться не вся информация!" << std::endl;
+                break;
             }
         }
         catch (int a)
@@ -109,7 +111,8 @@ void books(String& PATH, MyVector<Book>& bookArray)
         {
             if (iYear > 2020 || iYear < 1036)
             {
-                std::cout << "Не корректный год издания книги! Исправьте данные в файле!" << std::endl;
+                std::cout << "Не корректный год издания книги! Исправьте данные в файле! В выходном файле будет содержаться не вся информация!" << std::endl;
+                break;
             }
         }
         catch (int a)

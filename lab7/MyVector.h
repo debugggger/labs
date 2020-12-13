@@ -16,29 +16,22 @@ public:
 		arraySize = 1;
 		arrayLength = 0;
 	}
+
 	~MyVector()
 	{
 		delete[] array;
 	}
-	bool contains(T& elem)
-	{
-		for (int i = 0; i < arrayLength; i++)
-		{
-			if (array[i] == elem)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
+
 	int size()
 	{
 		return arrayLength;
 	}
+
 	T& operator[](int i)
 	{
 		return *(array + i);
 	}
+
 	void push_back(T elem)
 	{
 		if (arraySize > arrayLength)
