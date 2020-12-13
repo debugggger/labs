@@ -123,6 +123,7 @@ void books(String& PATH, MyVector<Book>& bookArray)
         bookArray.push_back(Book(author.getValue(), title.getValue(),
             UDK.getValue(), year.getValue(), discipline.getValue(), quan));
     }
+    inputFile.close();
 }
 
 void getString(std::ifstream& inputFile, String& str)
