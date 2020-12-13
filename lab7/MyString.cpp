@@ -86,3 +86,14 @@ istream& operator>>(istream& is, String& st)
         continue;
     return is;
 }
+
+int String::atoi(String _string)
+{
+    char* str = _string.str;
+    int res = 0;
+    for (int i = 0; str[i] != '\0'; ++i)
+    {
+        res = res * 10 + str[i] - 48;
+    }
+    return res;
+}

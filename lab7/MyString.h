@@ -30,15 +30,6 @@ public:
     friend istream& operator>>(istream& is, String& st);
     friend String operator+(const String& st1, const String& st2);
 
-    int atoi(String _string)
-    {
-        char* str = _string.str;
-        int res = 0;
-        for (int i = 0; str[i] != '\0'; ++i)
-        {
-            res = res * 10 + str[i] - 48;
-        }
-        return res;
-    }
+    int atoi(String _string);
 };
 #endif
