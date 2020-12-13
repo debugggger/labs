@@ -267,7 +267,7 @@ void printTable(MyVector<Book>& bookArray)
         std::cout << "|" << std::endl;
         for (int i = 0; i < maxLAut + maxLTitle + maxLYear + maxLUDK + maxLDis + maxLQuan + 7; i++)
             std::cout << "-";
-        std::cout << std::endl;
+        std::cout << std::endl; 
     }
 
 }
