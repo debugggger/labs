@@ -327,11 +327,6 @@ void printTable(MyVector<Book>& bookArray)
 
 }
 
-void checkLen()
-{
-
-}
-
 int maxL(const int len, int size, int maxL)
 {
     int tempPos = 0;
