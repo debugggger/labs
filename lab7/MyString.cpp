@@ -4,9 +4,7 @@
 using std::cin;
 using std::cout;
 
-
 int String::num_strings = 0;
-
 
 String::String(const char* s)
 {
@@ -87,13 +85,86 @@ istream& operator>>(istream& is, String& st)
     return is;
 }
 
+bool String::checkAuthor(String _string)
+{
+    char* str = _string.str;
+    for (int i = 0; i < _string.length(); i++)
+    {
+        if (i == 0 && str[i] > 64 && str[i] < 90)
+            return true;
+        else
+            return false;
+        if (i == _string.length() - 1 && str[i] > 64 && str[i] < 90)
+            return true;
+        else
+            return false;
+        if(i == _string.length() - 3 && str[i] > 64 && str[i] < 90)
+            return true;
+        else
+            return false;
+    }
+}
+
+bool String::checkTitle(String _string)
+{
+    char* str = _string.str;
+    for (int i = 0; i < _string.length(); i++)
+    {
+        if (i == 0 && str[i] > 64 && str[i] < 90)
+            return true;
+        else
+            return false;
+    }
+}
+
+bool String::checkDiscipline(String _string)
+{
+    char* str = _string.str;
+    bool tr = 0;
+    for (int i = 0; i < _string.length(); i++)
+    {
+        if ((str[i] > 64 && str[i] < 90) || (str[i] > 96 && str[i] < 123))
+            tr = 1;
+        else
+            tr = 0;
+    }
+    if (tr == 1)
+        return true;
+    else
+        return false;
+}
+
+bool String::checkUDK(String _string)
+{
+    char* str = _string.str;
+    bool tr = 0;
+    for (int i = 0; i < _string.length(); i++)
+    {
+        if ((str[i] > 47 && str[i] < 58) || (str[i] == 46))
+            tr = 1;
+        else
+            tr = 0;
+    }
+    if (tr == 1)
+        return true;
+    else
+        return false;
+}
+
 int String::atoi(String _string)
 {
     char* str = _string.str;
     int res = 0;
     for (int i = 0; str[i] != '\0'; ++i)
     {
-        res = res * 10 + str[i] - 48;
+        if (str[i] > 47 && str[i] < 58)
+            res = res * 10 + str[i] - 48;
+        else
+        {
+            std::cout << "Числовые данные не корректны!" << std::endl;
+            return -1;
+            break;
+        }
     }
     return res;
 }

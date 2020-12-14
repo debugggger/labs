@@ -31,5 +31,9 @@ public:
     friend String operator+(const String& st1, const String& st2);
 
     int atoi(String _string);
+    bool checkAuthor(String _string);
+    bool checkTitle(String _string);
+    bool checkDiscipline(String _string);
+    bool checkUDK(String _string);
 };
 #endif

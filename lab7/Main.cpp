@@ -37,24 +37,26 @@ int main()
         }
     }
 
-
-    
     std::cout << "Информация о книгах выведена в файл output.txt" << std::endl;
 
     freopen("output.txt", "w", stdout);
 
-    std::cout << "Книга с наибольшим количеством экземпляров: " 
-        << getAuthor(bookArray[maxI]) << " - " << getTitle(bookArray[maxI]) << std::endl <<
-        "Подробная информация о книге: " << std::endl << "год издания: " << 
-        getYear(bookArray[maxI]) << std::endl << "УДК: " << 
-        getUDK(bookArray[maxI]) << std::endl << "Предмет: " << 
-        getDiscipline(bookArray[maxI]) << std::endl << "Количество: " 
-        << getInfoQuantity(bookArray[maxI]) << std::endl;
+    if (bookArray.size() == 0)
+        std::cout << "Исходные данные не корректны, исправьте их и попробуйте еще раз." << std::endl;
+    else
+    {
+        std::cout << "Книга с наибольшим количеством экземпляров: "
+            << getAuthor(bookArray[maxI]) << " - " << getTitle(bookArray[maxI]) << std::endl <<
+            "Подробная информация о книге: " << std::endl << "год издания: " <<
+            getYear(bookArray[maxI]) << std::endl << "УДК: " <<
+            getUDK(bookArray[maxI]) << std::endl << "Предмет: " <<
+            getDiscipline(bookArray[maxI]) << std::endl << "Количество: "
+            << getInfoQuantity(bookArray[maxI]) << std::endl;
 
-    sort(bookArray, bookArray.size());
+        sort(bookArray, bookArray.size());
 
-    printTable(bookArray);
-
+        printTable(bookArray);
+    }
     fclose(stdout);
 
 
@@ -94,11 +96,64 @@ void books(String& PATH, MyVector<Book>& bookArray)
         getString(inputFile, quantity);
         int quan = quantity.atoi(quantity);
         int iYear = year.atoi(year);
+
+        try
+        {
+            if (author.checkAuthor(author) == false)
+            {
+                std::cout << "Введите ФИО автора с заглавными буквами! В выходном файле будет содержаться не вся информация!" << std::endl;
+                break;
+            }
+        }
+        catch (char a)
+        {
+            std::cerr << "We caught an char exception with: " << a << '\n';
+        }
+
+        try
+        {
+            if (title.checkTitle(title) == false)
+            {
+                std::cout << "Введите название книги с заглавной буквы! В выходном файле будет содержаться не вся информация!" << std::endl;
+                break;
+            }
+        }
+        catch (char a)
+        {
+            std::cerr << "We caught an char exception with: " << a << '\n';
+        }
+
+        try
+        {
+            if (discipline.checkDiscipline(discipline) == false)
+            {
+                std::cout << "В названии предмета недопустимые символы! В выходном файле будет содержаться не вся информация!" << std::endl;
+                break;
+            }
+        }
+        catch (char a)
+        {
+            std::cerr << "We caught an char exception with: " << a << '\n';
+        }
+
+        try
+        {
+            if (UDK.checkUDK(UDK) == false)
+            {
+                std::cout << "В коде УДК недопустимые символы! В выходном файле будет содержаться не вся информация!" << std::endl;
+                break;
+            }
+        }
+        catch (char a)
+        {
+            std::cerr << "We caught an char exception with: " << a << '\n';
+        }
+
         try
         {
             if (quan < 0)
             {
-                std::cout << "Количество книг не может быть отрицательным! Исправьте данные в файле! В выходном файле будет содержаться не вся информация!" << std::endl;
+                std::cout << "Данные о количестве книг не правильны! Исправьте данные в файле! В выходном файле будет содержаться не вся информация!" << std::endl;
                 break;
             }
         }
@@ -269,6 +324,11 @@ void printTable(MyVector<Book>& bookArray)
             std::cout << "-";
         std::cout << std::endl; 
     }
+
+}
+
+void checkLen()
+{
 
 }
 
