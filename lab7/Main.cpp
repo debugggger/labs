@@ -42,7 +42,7 @@ int main()
     freopen("output.txt", "w", stdout);
 
     if (bookArray.size() == 0)
-        std::cout << "Исходные данные не корректны, исправьте их и попробуйте еще раз." << std::endl;
+        std::cout << "Исходные данные не содержат информации о книгах" << std::endl;
     else
     {
         std::cout << "Книга с наибольшим количеством экземпляров: "
@@ -58,7 +58,6 @@ int main()
         printTable(bookArray);
     }
     fclose(stdout);
-
 
     return 0;
 }
@@ -101,8 +100,11 @@ void books(String& PATH, MyVector<Book>& bookArray)
         {
             if (author.checkAuthor(author) == false)
             {
-                std::cout << "Введите ФИО автора с заглавными буквами! В выходном файле будет содержаться не вся информация!" << std::endl;
-                break;
+                std::cout << "Введите ФИО автора с заглавными буквами!" << std::endl;
+                freopen("output.txt", "w", stdout);
+                std::cout << "Исходные данные заданы не корректно" << std::endl;
+                fclose(stdout);
+                exit(1);
             }
         }
         catch (char a)
@@ -114,8 +116,11 @@ void books(String& PATH, MyVector<Book>& bookArray)
         {
             if (title.checkTitle(title) == false)
             {
-                std::cout << "Введите название книги с заглавной буквы! В выходном файле будет содержаться не вся информация!" << std::endl;
-                break;
+                std::cout << "Введите название книги с заглавной буквы!" << std::endl;
+                freopen("output.txt", "w", stdout);
+                std::cout << "Исходные данные заданы не корректно" << std::endl;
+                fclose(stdout);
+                exit(1);
             }
         }
         catch (char a)
@@ -127,8 +132,11 @@ void books(String& PATH, MyVector<Book>& bookArray)
         {
             if (discipline.checkDiscipline(discipline) == false)
             {
-                std::cout << "В названии предмета недопустимые символы! В выходном файле будет содержаться не вся информация!" << std::endl;
-                break;
+                std::cout << "В названии предмета недопустимые символы!" << std::endl;
+                freopen("output.txt", "w", stdout);
+                std::cout << "Исходные данные заданы не корректно" << std::endl;
+                fclose(stdout);
+                exit(1);
             }
         }
         catch (char a)
@@ -140,8 +148,11 @@ void books(String& PATH, MyVector<Book>& bookArray)
         {
             if (UDK.checkUDK(UDK) == false)
             {
-                std::cout << "В коде УДК недопустимые символы! В выходном файле будет содержаться не вся информация!" << std::endl;
-                break;
+                std::cout << "В коде УДК недопустимые символы! Исправьте данные в файле!" << std::endl;
+                freopen("output.txt", "w", stdout);
+                std::cout << "Исходные данные заданы не корректно" << std::endl;
+                fclose(stdout);
+                exit(1);
             }
         }
         catch (char a)
@@ -153,8 +164,11 @@ void books(String& PATH, MyVector<Book>& bookArray)
         {
             if (quan < 0)
             {
-                std::cout << "Данные о количестве книг не правильны! Исправьте данные в файле! В выходном файле будет содержаться не вся информация!" << std::endl;
-                break;
+                std::cout << "Данные о количестве книг не корректны! Исправьте данные в файле!" << std::endl;
+                freopen("output.txt", "w", stdout);
+                std::cout << "Исходные данные заданы не корректно" << std::endl;
+                fclose(stdout);
+                exit(1);
             }
         }
         catch (int a)
@@ -167,7 +181,10 @@ void books(String& PATH, MyVector<Book>& bookArray)
             if (iYear > 2020 || iYear < 1036)
             {
                 std::cout << "Не корректный год издания книги! Исправьте данные в файле! В выходном файле будет содержаться не вся информация!" << std::endl;
-                break;
+                freopen("output.txt", "w", stdout);
+                std::cout << "Исходные данные заданы не корректно" << std::endl;
+                fclose(stdout);
+                exit(1);
             }
         }
         catch (int a)

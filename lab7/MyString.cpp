@@ -90,15 +90,15 @@ bool String::checkAuthor(String _string)
     char* str = _string.str;
     for (int i = 0; i < _string.length(); i++)
     {
-        if (i == 0 && str[i] > 64 && str[i] < 90)
+        if (i == 0 && str[i] > 64 && str[i] < 91)
             return true;
         else
             return false;
-        if (i == _string.length() - 1 && str[i] > 64 && str[i] < 90)
+        if (i == _string.length() - 1 && str[i] > 64 && str[i] < 91)
             return true;
         else
             return false;
-        if(i == _string.length() - 3 && str[i] > 64 && str[i] < 90)
+        if(i == _string.length() - 3 && str[i] > 64 && str[i] < 91)
             return true;
         else
             return false;
@@ -110,7 +110,7 @@ bool String::checkTitle(String _string)
     char* str = _string.str;
     for (int i = 0; i < _string.length(); i++)
     {
-        if (i == 0 && str[i] > 64 && str[i] < 90)
+        if (i == 0 && str[i] > 64 && str[i] < 91)
             return true;
         else
             return false;
@@ -123,7 +123,7 @@ bool String::checkDiscipline(String _string)
     bool tr = 0;
     for (int i = 0; i < _string.length(); i++)
     {
-        if ((str[i] > 64 && str[i] < 90) || (str[i] > 96 && str[i] < 123))
+        if ((str[i] > 64 && str[i] < 91) || (str[i] > 96 && str[i] < 123))
             tr = 1;
         else
             tr = 0;
