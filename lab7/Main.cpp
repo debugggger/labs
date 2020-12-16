@@ -103,6 +103,7 @@ void books(String& PATH, MyVector<Book>& bookArray)
                 std::cout << "Введите ФИО автора с заглавными буквами!" << std::endl;
                 freopen("output.txt", "w", stdout);
                 std::cout << "Исходные данные заданы не корректно" << std::endl;
+                std::cout << "Исправьте в этой строке ошибку: "<< author.getValue() << std::endl;
                 fclose(stdout);
                 exit(1);
             }
@@ -119,6 +120,7 @@ void books(String& PATH, MyVector<Book>& bookArray)
                 std::cout << "Введите название книги с заглавной буквы!" << std::endl;
                 freopen("output.txt", "w", stdout);
                 std::cout << "Исходные данные заданы не корректно" << std::endl;
+                std::cout << "Исправьте в этой строке ошибку: " << title.getValue() << std::endl;
                 fclose(stdout);
                 exit(1);
             }
@@ -135,6 +137,7 @@ void books(String& PATH, MyVector<Book>& bookArray)
                 std::cout << "В названии предмета недопустимые символы!" << std::endl;
                 freopen("output.txt", "w", stdout);
                 std::cout << "Исходные данные заданы не корректно" << std::endl;
+                std::cout << "Исправьте в этой строке ошибку: " << discipline.getValue() << std::endl;
                 fclose(stdout);
                 exit(1);
             }
@@ -151,6 +154,7 @@ void books(String& PATH, MyVector<Book>& bookArray)
                 std::cout << "В коде УДК недопустимые символы! Исправьте данные в файле!" << std::endl;
                 freopen("output.txt", "w", stdout);
                 std::cout << "Исходные данные заданы не корректно" << std::endl;
+                std::cout << "Исправьте в этой строке ошибку: " << UDK.getValue() << std::endl;
                 fclose(stdout);
                 exit(1);
             }
@@ -167,6 +171,7 @@ void books(String& PATH, MyVector<Book>& bookArray)
                 std::cout << "Данные о количестве книг не корректны! Исправьте данные в файле!" << std::endl;
                 freopen("output.txt", "w", stdout);
                 std::cout << "Исходные данные заданы не корректно" << std::endl;
+                std::cout << "Исправьте в этой строке ошибку: " << quantity.getValue() << std::endl;
                 fclose(stdout);
                 exit(1);
             }
@@ -183,6 +188,7 @@ void books(String& PATH, MyVector<Book>& bookArray)
                 std::cout << "Не корректный год издания книги! Исправьте данные в файле! В выходном файле будет содержаться не вся информация!" << std::endl;
                 freopen("output.txt", "w", stdout);
                 std::cout << "Исходные данные заданы не корректно" << std::endl;
+                std::cout << "Исправьте в этой строке ошибку: " << year.getValue() << std::endl;
                 fclose(stdout);
                 exit(1);
             }

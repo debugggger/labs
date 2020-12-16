@@ -1,6 +1,6 @@
 #pragma once
-#ifndef Sort_H
-#define Sort_H
+#ifndef SORT_H
+#define SORT_H
 
 template <typename T> void sort(T& array, const int size)
 {

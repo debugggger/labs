@@ -1,5 +1,5 @@
-#ifndef MyVector_H
-#define MyVector_H
+#ifndef MY_VECTOR_H
+#define MY_VECTOR_H
 #pragma once
 
 template <class T>

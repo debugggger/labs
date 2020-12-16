@@ -69,7 +69,6 @@ String operator+(const String& st1, const String& st2)
     delete[] _temp.str;               
     _temp.len = st1.len + st2.len;      
     _temp.str = new char[_temp.len + 1]; 
-
     std::strcpy(_temp.str, std::strcat(st1.str, st2.str));
     return _temp;
 }
